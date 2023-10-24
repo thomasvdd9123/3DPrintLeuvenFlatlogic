@@ -69,8 +69,12 @@ const RolesForm = (props) => {
               <Grid mr={3} item>
                 <ItemsList
                   tableName={'permissions'}
-                  items={form.values.permissions}
+                  items={form.values.permissions.map((item) => ({
+                    name: item.name,
+                    id: item.id,
+                  }))}
                   name={'permissions'}
+                  nameRow={'name'}
                 />
               </Grid>
 
