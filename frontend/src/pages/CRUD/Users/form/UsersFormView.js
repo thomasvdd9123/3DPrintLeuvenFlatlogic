@@ -127,8 +127,12 @@ const UsersForm = (props) => {
               <Grid mr={3} item>
                 <ItemsList
                   tableName={'custom_permissions'}
-                  items={form.values.custom_permissions}
+                  items={form.values.custom_permissions.map((item) => ({
+                    name: item.name,
+                    id: item.id,
+                  }))}
                   name={'permissions'}
+                  nameRow={'name'}
                 />
               </Grid>
 
