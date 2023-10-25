@@ -358,9 +358,9 @@ function Login(props) {
             rel='noopener noreferrer'
             target='_blank'
           >
-            Flatlogic
+            Flatlogicccc
           </a>
-          , LLC. All rights reserved.
+          , LLC. All rights reservedddd.
         </Typography>
       </div>
     </Grid>
