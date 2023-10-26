@@ -6,6 +6,8 @@ import { actions as rolesActions } from 'actions/roles/rolesListActions';
 
 import { actions as permissionsActions } from 'actions/permissions/permissionsListActions';
 
+import { actions as modelsActions } from 'actions/models/modelsListActions';
+
 import * as dataFormat from 'pages/CRUD/Users/table/UsersDataFormatters';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -43,6 +45,8 @@ import RolesSelectItem from 'pages/CRUD/Roles/helpers/RolesSelectItem';
 
 import PermissionsSelectItem from 'pages/CRUD/Permissions/helpers/PermissionsSelectItem';
 
+import ModelsSelectItem from 'pages/CRUD/Models/helpers/ModelsSelectItem';
+
 const UsersForm = (props) => {
   const { findLoading, record, onCancel } = props;
 
@@ -55,10 +59,14 @@ const UsersForm = (props) => {
 
   const permissionsRows = useSelector((store) => store.permissions.list.rows);
 
+  const modelsRows = useSelector((store) => store.models.list.rows);
+
   useEffect(() => {
     dispatch(rolesActions.doFetch());
 
     dispatch(permissionsActions.doFetch());
+
+    dispatch(modelsActions.doFetch());
   }, []);
 
   const renderForm = () => (
@@ -133,6 +141,18 @@ const UsersForm = (props) => {
                   }))}
                   name={'permissions'}
                   nameRow={'name'}
+                />
+              </Grid>
+
+              <Grid mr={3} item>
+                <ItemsList
+                  tableName={'model'}
+                  items={form.values.model.map((item) => ({
+                    id: item.id,
+                    id: item.id,
+                  }))}
+                  name={'models'}
+                  nameRow={'id'}
                 />
               </Grid>
 

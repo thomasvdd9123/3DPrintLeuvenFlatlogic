@@ -106,6 +106,25 @@ function permissionsOneListFormatterEdit(val) {
   return { label: val.name, id: val.id };
 }
 
+function modelsManyListFormatter(val) {
+  if (!val || !val.length) return [];
+  return val.map((item) => item.id);
+}
+function modelsOneListFormatter(val) {
+  if (!val) return '';
+  return val.id;
+}
+function modelsManyListFormatterEdit(val) {
+  if (!val || !val.length) return [];
+  return val.map((item) => {
+    return { id: item.id, label: item.id };
+  });
+}
+function modelsOneListFormatterEdit(val) {
+  if (!val) return '';
+  return { label: val.id, id: val.id };
+}
+
 function listFormatter(cell, history, entity) {
   if (!cell) return null;
 
@@ -149,4 +168,8 @@ export {
   permissionsManyListFormatterEdit,
   permissionsOneListFormatter,
   permissionsManyListFormatter,
+  modelsOneListFormatterEdit,
+  modelsManyListFormatterEdit,
+  modelsOneListFormatter,
+  modelsManyListFormatter,
 };

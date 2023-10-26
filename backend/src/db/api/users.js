@@ -51,6 +51,10 @@ module.exports = class UsersDBApi {
       transaction,
     });
 
+    await users.setModel(data.data.model || [], {
+      transaction,
+    });
+
     await FileDBApi.replaceRelationFiles(
       {
         belongsTo: db.users.getTableName(),
@@ -160,6 +164,10 @@ module.exports = class UsersDBApi {
       transaction,
     });
 
+    await users.setModel(data.model || [], {
+      transaction,
+    });
+
     await FileDBApi.replaceRelationFiles(
       {
         belongsTo: db.users.getTableName(),
@@ -224,6 +232,10 @@ module.exports = class UsersDBApi {
       transaction,
     });
 
+    output.model = await users.getModel({
+      transaction,
+    });
+
     return output;
   }
 
@@ -257,6 +269,21 @@ module.exports = class UsersDBApi {
             }
           : null,
         required: filter.custom_permissions ? true : null,
+      },
+
+      {
+        model: db.models,
+        as: 'model',
+        through: filter.model
+          ? {
+              where: {
+                [Op.or]: filter.model.split('|').map((item) => {
+                  return { ['Id']: Utils.uuid(item) };
+                }),
+              },
+            }
+          : null,
+        required: filter.model ? true : null,
       },
 
       {
