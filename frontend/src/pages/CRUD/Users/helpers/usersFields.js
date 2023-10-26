@@ -48,6 +48,13 @@ const usersFields = {
 
   custom_permissions: { type: 'relation_many', label: 'Custom Permissions' },
 
+  model: {
+    type: 'relation_many',
+    label: 'Model',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
+
   password: { type: 'string', label: 'Password' },
 };
 

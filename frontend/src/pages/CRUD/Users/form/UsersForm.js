@@ -29,6 +29,8 @@ import RolesSelectItem from 'pages/CRUD/Roles/helpers/RolesSelectItem';
 
 import PermissionsSelectItem from 'pages/CRUD/Permissions/helpers/PermissionsSelectItem';
 
+import ModelsSelectItem from 'pages/CRUD/Models/helpers/ModelsSelectItem';
+
 const UsersForm = (props) => {
   const {
     isEditing,
@@ -124,6 +126,16 @@ const UsersForm = (props) => {
               <Grid item>
                 <PermissionsSelectItem
                   name={'custom_permissions'}
+                  schema={usersFields}
+                  showCreate={!modal}
+                  multiple
+                  form={form}
+                />
+              </Grid>
+
+              <Grid item>
+                <ModelsSelectItem
+                  name={'model'}
                   schema={usersFields}
                   showCreate={!modal}
                   multiple
