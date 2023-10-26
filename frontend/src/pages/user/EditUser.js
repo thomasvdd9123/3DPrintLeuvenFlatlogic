@@ -52,7 +52,7 @@ const EditUser = () => {
   const managementValue = useManagementState();
 
   function extractExtensionFrom(filename) {
-    if (!filename) {µ
+    if (!filename) {
       return null;
     }
 
