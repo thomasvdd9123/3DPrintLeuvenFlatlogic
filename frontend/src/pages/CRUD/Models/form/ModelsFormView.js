@@ -51,6 +51,89 @@ const ModelsForm = (props) => {
         {(form) => (
           <form>
             <Grid container spacing={3} direction='column'>
+              <Grid item>
+                <FilesFormItem
+                  name={'file'}
+                  schema={modelsFields}
+                  path={'models/file'}
+                  fileProps={{
+                    size: undefined,
+                    formats: undefined,
+                  }}
+                  max={undefined}
+                />
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['name'].label}
+                </Typography>
+                <Typography>{form.values.name}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['material'].label}
+                </Typography>
+                <Typography>{form.values.material}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['color'].label}
+                </Typography>
+                <Typography>{form.values.color}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['finish'].label}
+                </Typography>
+                <Typography>{form.values.finish}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['scale'].label}
+                </Typography>
+                <Typography>{form.values.scale}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['length'].label}
+                </Typography>
+                <Typography>{form.values.length}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['width'].label}
+                </Typography>
+                <Typography>{form.values.width}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['height'].label}
+                </Typography>
+                <Typography>{form.values.height}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['quantity'].label}
+                </Typography>
+                <Typography>{form.values.quantity}</Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography variant='h6' style={{ marginBottom: 10 }}>
+                  {modelsFields['price'].label}
+                </Typography>
+                <Typography>{form.values.price}</Typography>
+              </Grid>
+
               <Grid container ml={3} mt={3}>
                 <Grid item>
                   <Button

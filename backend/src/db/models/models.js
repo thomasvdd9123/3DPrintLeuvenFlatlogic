@@ -14,6 +14,46 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
       },
 
+      name: {
+        type: DataTypes.TEXT,
+      },
+
+      material: {
+        type: DataTypes.TEXT,
+      },
+
+      color: {
+        type: DataTypes.TEXT,
+      },
+
+      finish: {
+        type: DataTypes.TEXT,
+      },
+
+      scale: {
+        type: DataTypes.INTEGER,
+      },
+
+      length: {
+        type: DataTypes.INTEGER,
+      },
+
+      width: {
+        type: DataTypes.INTEGER,
+      },
+
+      height: {
+        type: DataTypes.INTEGER,
+      },
+
+      quantity: {
+        type: DataTypes.INTEGER,
+      },
+
+      price: {
+        type: DataTypes.DECIMAL,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -31,6 +71,16 @@ module.exports = function (sequelize, DataTypes) {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
     //end loop
+
+    db.models.hasMany(db.file, {
+      as: 'file',
+      foreignKey: 'belongsToId',
+      constraints: false,
+      scope: {
+        belongsTo: db.models.getTableName(),
+        belongsToColumn: 'file',
+      },
+    });
 
     db.models.belongsTo(db.users, {
       as: 'createdBy',

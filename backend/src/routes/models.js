@@ -20,6 +20,39 @@ router.use(checkCrudPermissions('models'));
  *        type: object
  *        properties:
 
+ *          name:
+ *            type: string
+ *            default: name
+ *          material:
+ *            type: string
+ *            default: material
+ *          color:
+ *            type: string
+ *            default: color
+ *          finish:
+ *            type: string
+ *            default: finish
+
+ *          scale:
+ *            type: integer
+ *            format: int64
+ *          length:
+ *            type: integer
+ *            format: int64
+ *          width:
+ *            type: integer
+ *            format: int64
+ *          height:
+ *            type: integer
+ *            format: int64
+ *          quantity:
+ *            type: integer
+ *            format: int64
+
+ *          price:
+ *            type: integer
+ *            format: int64
+
  */
 
 /**
@@ -218,7 +251,19 @@ router.get(
     const filetype = req.query.filetype;
     const payload = await ModelsDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = [
+        'id',
+        'name',
+        'material',
+        'color',
+        'finish',
+        'scale',
+        'length',
+        'width',
+        'height',
+        'quantity',
+        'price',
+      ];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

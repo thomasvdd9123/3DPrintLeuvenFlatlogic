@@ -73,7 +73,18 @@ const ModelsTable = () => {
   const linkCsvDownload = useRef(null);
   const [width, setWidth] = useState(window.innerWidth);
 
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState([
+    { label: 'Name', title: 'name' },
+    { label: 'Material', title: 'material' },
+    { label: 'Color', title: 'color' },
+    { label: 'Finish', title: 'finish' },
+    { label: 'Scale', title: 'scale', number: 'true' },
+    { label: 'Length', title: 'length', number: 'true' },
+    { label: 'Width', title: 'width', number: 'true' },
+    { label: 'Height', title: 'height', number: 'true' },
+    { label: 'Quantity', title: 'quantity', number: 'true' },
+    { label: 'Price', title: 'price', number: 'true' },
+  ]);
 
   const [filterItems, setFilterItems] = useState([]);
   const [filterUrl, setFilterUrl] = useState('');
@@ -279,6 +290,107 @@ const ModelsTable = () => {
   }
 
   const columns = [
+    {
+      field: 'file',
+
+      sortable: false,
+      renderCell: function (params) {
+        return dataFormat.filesFormatter(params.row, this.field);
+      },
+
+      headerName: 'File',
+    },
+
+    {
+      field: 'name',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Name',
+    },
+
+    {
+      field: 'material',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Material',
+    },
+
+    {
+      field: 'color',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Color',
+    },
+
+    {
+      field: 'finish',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Finish',
+    },
+
+    {
+      field: 'scale',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Scale',
+    },
+
+    {
+      field: 'length',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Length',
+    },
+
+    {
+      field: 'width',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Width',
+    },
+
+    {
+      field: 'height',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Height',
+    },
+
+    {
+      field: 'quantity',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Quantity',
+    },
+
+    {
+      field: 'price',
+
+      flex: 0.6,
+      editable: true,
+
+      headerName: 'Price',
+    },
+
     {
       field: 'id',
       headerName: 'Actions',
