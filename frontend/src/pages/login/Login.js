@@ -351,16 +351,16 @@ function Login(props) {
           )}
         </div>
         <Typography color='primary' className={classes.copyright}>
-          {new Date().getFullYear()}{' '}
+          2014-{new Date().getFullYear()}{' '}
           <a
             style={{ textDecoration: 'none', color: 'inherit' }}
-            href='https://3dprintleuven.be'
+            href='https://flatlogic.com'
             rel='noopener noreferrer'
             target='_blank'
           >
-            3DprintLeuven
+            Flatlogic
           </a>
-          , All rights reserved.
+          , LLC. All rights reserved.
         </Typography>
       </div>
     </Grid>

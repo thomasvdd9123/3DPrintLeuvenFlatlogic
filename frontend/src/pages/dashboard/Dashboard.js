@@ -66,10 +66,6 @@ const Dashboard = () => {
     );
   }
 
-  function handleFile(event) {
-    window.alert('File uploaded');
-  }
-
   return (
     <div>
       <h1 className='page-title'>
@@ -163,36 +159,6 @@ const Dashboard = () => {
           </Grid>
         )}
 
-        {hasPermission(currentUser, 'READ_ROLES') && (
-          <Grid item xs={12} sm={6} lg={4} xl={3}>
-              <Widget title={'File Upload'}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <p className={classes.widgetText}>
-                  <label
-                    className={classes.uploadLabel}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {'Upload your 3D file'}
-                    <input
-                      style={{ display: 'none' }}
-                      accept='.stl'
-                      type='file'
-                      //ref={fileInput}
-                      onChange={handleFile}
-                    />
-                  </label>
-                    
-                  </p>
-                </div>
-              </Widget>
-          </Grid>
-        )}
-
         {hasPermission(currentUser, 'READ_PERMISSIONS') && (
           <Grid item xs={12} sm={6} lg={4} xl={3}>
             <Link to={'/admin/permissions'} style={{ textDecoration: 'none' }}>
@@ -217,7 +183,6 @@ const Dashboard = () => {
         )}
       </Grid>
     </div>
-    
   );
 };
 

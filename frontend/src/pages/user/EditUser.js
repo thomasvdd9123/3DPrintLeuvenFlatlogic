@@ -101,7 +101,6 @@ const EditUser = () => {
 
     return null;
   };
-
   const history = useHistory();
 
   useEffect(() => {

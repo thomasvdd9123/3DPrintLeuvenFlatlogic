@@ -142,7 +142,7 @@ Then give that new user privileges to the new database then quit the `psql`.
 > Please change current folder: `cd frontend`
 
   ### Quick Start
-yarn start
+
   #### 1. Run `yarn install`
 
   This will install both run-time project dependencies and developer tools listed
@@ -170,7 +170,7 @@ yarn start
 The project contains the **docker folder** and the `Dockerfile`.
 
 The `Dockerfile` is used to Deploy the project to Google Cloud.
-cd..
+
 The **docker folder** contains a couple of helper scripts:
 
 - `docker-compose.yml` (all our services: web, backend, db are described here)

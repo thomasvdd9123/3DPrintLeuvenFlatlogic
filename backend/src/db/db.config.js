@@ -12,7 +12,7 @@ module.exports = {
   development: {
     username: 'postgres',
     dialect: 'postgres',
-    password: 'postgres',
+    password: '',
     database: 'db_3dprintleuven',
     host: process.env.DEV_DB_HOST || 'localhost',
     logging: console.log,
