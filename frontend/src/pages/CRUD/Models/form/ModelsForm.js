@@ -66,7 +66,60 @@ const ModelsForm = (props) => {
       >
         {(form) => (
           <form onSubmit={form.handleSubmit}>
-            <Grid container spacing={3} direction='column'></Grid>
+            <Grid container spacing={3} direction='column'>
+              <Grid item>
+                <FilesFormItem
+                  name={'file'}
+                  schema={modelsFields}
+                  path={'models/file'}
+                  fileProps={{
+                    size: undefined,
+                    formats: undefined,
+                  }}
+                  max={undefined}
+                />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'name'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'material'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'color'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'finish'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'scale'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'length'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'width'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'height'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'quantity'} schema={modelsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'price'} schema={modelsFields} />
+              </Grid>
+            </Grid>
             <Grid container spacing={3} mt={2}>
               <Grid item>
                 <Button
