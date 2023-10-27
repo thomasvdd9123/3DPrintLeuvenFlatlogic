@@ -7,9 +7,6 @@ import * as rolesDataFormat from 'pages/CRUD/Roles/table/RolesDataFormatters';
 // eslint-disable-next-line
 import * as permissionsDataFormat from 'pages/CRUD/Permissions/table/PermissionsDataFormatters';
 
-// eslint-disable-next-line
-import * as modelsDataFormat from 'pages/CRUD/Models/table/ModelsDataFormatters';
-
 import actions from 'actions/users/usersListActions';
 import actionsUsers from 'actions/users/usersFormActions';
 import React, { useRef, useState } from 'react';
@@ -427,41 +424,6 @@ const UsersTable = () => {
     },
 
     {
-      field: 'model',
-
-      sortable: false,
-      renderCell: (params) =>
-        modelsDataFormat.listFormatter(
-          params.row[params.field],
-          history,
-          'models',
-        ),
-      flex: 1,
-
-      editable: true,
-      type: 'singleSelect',
-      valueFormatter: ({ value }) =>
-        dataFormat.modelsManyListFormatter(value).join(', '),
-      renderEditCell: (params) => {
-        params = {
-          ...params,
-          value: _.map(params.value, (value) => {
-            return value.id ?? value;
-          }),
-        };
-        return (
-          <DataGridMultiSelect
-            {...params}
-            entityName={'models'}
-            nameRow={'id'}
-          />
-        );
-      },
-
-      headerName: 'Model',
-    },
-
-    {
       field: 'id',
       headerName: 'Actions',
       sortable: false,
@@ -754,8 +716,8 @@ const UsersTable = () => {
               target={'_blank'}
               href={
                 process.env.NODE_ENV === 'production'
-                  ? window.location.origin + '/api-docs/#/Models'
-                  : 'http://localhost:8080/api-docs/#/Models'
+                  ? window.location.origin + '/api-docs/#/Permissions'
+                  : 'http://localhost:8080/api-docs/#/Permissions'
               }
             >
               API documentation for users

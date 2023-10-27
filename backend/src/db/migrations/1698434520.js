@@ -45,6 +45,40 @@ module.exports = {
       );
 
       await queryInterface.createTable(
+        'orders',
+        {
+          id: {
+            type: Sequelize.DataTypes.UUID,
+            defaultValue: Sequelize.DataTypes.UUIDV4,
+            primaryKey: true,
+          },
+          createdById: {
+            type: Sequelize.DataTypes.UUID,
+            references: {
+              key: 'id',
+              model: 'users',
+            },
+          },
+          updatedById: {
+            type: Sequelize.DataTypes.UUID,
+            references: {
+              key: 'id',
+              model: 'users',
+            },
+          },
+          createdAt: { type: Sequelize.DataTypes.DATE },
+          updatedAt: { type: Sequelize.DataTypes.DATE },
+          deletedAt: { type: Sequelize.DataTypes.DATE },
+          importHash: {
+            type: Sequelize.DataTypes.STRING(255),
+            allowNull: true,
+            unique: true,
+          },
+        },
+        { transaction },
+      );
+
+      await queryInterface.createTable(
         'roles',
         {
           id: {
@@ -80,74 +114,6 @@ module.exports = {
 
       await queryInterface.createTable(
         'permissions',
-        {
-          id: {
-            type: Sequelize.DataTypes.UUID,
-            defaultValue: Sequelize.DataTypes.UUIDV4,
-            primaryKey: true,
-          },
-          createdById: {
-            type: Sequelize.DataTypes.UUID,
-            references: {
-              key: 'id',
-              model: 'users',
-            },
-          },
-          updatedById: {
-            type: Sequelize.DataTypes.UUID,
-            references: {
-              key: 'id',
-              model: 'users',
-            },
-          },
-          createdAt: { type: Sequelize.DataTypes.DATE },
-          updatedAt: { type: Sequelize.DataTypes.DATE },
-          deletedAt: { type: Sequelize.DataTypes.DATE },
-          importHash: {
-            type: Sequelize.DataTypes.STRING(255),
-            allowNull: true,
-            unique: true,
-          },
-        },
-        { transaction },
-      );
-
-      await queryInterface.createTable(
-        'orders',
-        {
-          id: {
-            type: Sequelize.DataTypes.UUID,
-            defaultValue: Sequelize.DataTypes.UUIDV4,
-            primaryKey: true,
-          },
-          createdById: {
-            type: Sequelize.DataTypes.UUID,
-            references: {
-              key: 'id',
-              model: 'users',
-            },
-          },
-          updatedById: {
-            type: Sequelize.DataTypes.UUID,
-            references: {
-              key: 'id',
-              model: 'users',
-            },
-          },
-          createdAt: { type: Sequelize.DataTypes.DATE },
-          updatedAt: { type: Sequelize.DataTypes.DATE },
-          deletedAt: { type: Sequelize.DataTypes.DATE },
-          importHash: {
-            type: Sequelize.DataTypes.STRING(255),
-            allowNull: true,
-            unique: true,
-          },
-        },
-        { transaction },
-      );
-
-      await queryInterface.createTable(
-        'models',
         {
           id: {
             type: Sequelize.DataTypes.UUID,
@@ -306,10 +272,15 @@ module.exports = {
       );
 
       await queryInterface.addColumn(
-        'permissions',
-        'name',
+        'users',
+        'app_roleId',
         {
-          type: Sequelize.DataTypes.TEXT,
+          type: Sequelize.DataTypes.UUID,
+
+          references: {
+            model: 'roles',
+            key: 'id',
+          },
         },
         { transaction },
       );
@@ -324,15 +295,10 @@ module.exports = {
       );
 
       await queryInterface.addColumn(
-        'users',
-        'app_roleId',
+        'permissions',
+        'name',
         {
-          type: Sequelize.DataTypes.UUID,
-
-          references: {
-            model: 'roles',
-            key: 'id',
-          },
+          type: Sequelize.DataTypes.TEXT,
         },
         { transaction },
       );
@@ -354,11 +320,11 @@ module.exports = {
      */
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.removeColumn('users', 'app_roleId', { transaction });
+      await queryInterface.removeColumn('permissions', 'name', { transaction });
 
       await queryInterface.removeColumn('roles', 'name', { transaction });
 
-      await queryInterface.removeColumn('permissions', 'name', { transaction });
+      await queryInterface.removeColumn('users', 'app_roleId', { transaction });
 
       await queryInterface.removeColumn('users', 'provider', { transaction });
 
@@ -402,13 +368,11 @@ module.exports = {
 
       await queryInterface.removeColumn('users', 'firstName', { transaction });
 
-      await queryInterface.dropTable('models', { transaction });
-
-      await queryInterface.dropTable('orders', { transaction });
-
       await queryInterface.dropTable('permissions', { transaction });
 
       await queryInterface.dropTable('roles', { transaction });
+
+      await queryInterface.dropTable('orders', { transaction });
 
       await queryInterface.dropTable('users', { transaction });
 

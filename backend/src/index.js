@@ -18,8 +18,6 @@ const usersRoutes = require('./routes/users');
 
 const ordersRoutes = require('./routes/orders');
 
-const modelsRoutes = require('./routes/models');
-
 const rolesRoutes = require('./routes/roles');
 
 const permissionsRoutes = require('./routes/permissions');
@@ -91,12 +89,6 @@ app.use(
   '/api/orders',
   passport.authenticate('jwt', { session: false }),
   ordersRoutes,
-);
-
-app.use(
-  '/api/models',
-  passport.authenticate('jwt', { session: false }),
-  modelsRoutes,
 );
 
 app.use(

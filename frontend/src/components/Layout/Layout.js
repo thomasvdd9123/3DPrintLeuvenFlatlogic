@@ -36,10 +36,6 @@ import OrdersFormPage from 'pages/CRUD/Orders/form/OrdersFormPage';
 import OrdersFormPageView from 'pages/CRUD/Orders/form/OrdersFormPageView';
 import OrdersTablePage from 'pages/CRUD/Orders/table/OrdersTablePage';
 
-import ModelsFormPage from 'pages/CRUD/Models/form/ModelsFormPage';
-import ModelsFormPageView from 'pages/CRUD/Models/form/ModelsFormPageView';
-import ModelsTablePage from 'pages/CRUD/Models/table/ModelsTablePage';
-
 import RolesFormPage from 'pages/CRUD/Roles/form/RolesFormPage';
 import RolesFormPageView from 'pages/CRUD/Roles/form/RolesFormPageView';
 import RolesTablePage from 'pages/CRUD/Roles/table/RolesTablePage';
@@ -119,19 +115,6 @@ function Layout(props) {
             path={'/admin/orders/:id/show'}
             exact
             component={OrdersFormPageView}
-          />
-
-          <Route path={'/admin/models'} exact component={ModelsTablePage} />
-          <Route path={'/admin/models/new'} exact component={ModelsFormPage} />
-          <Route
-            path={'/admin/models/:id/edit'}
-            exact
-            component={ModelsFormPage}
-          />
-          <Route
-            path={'/admin/models/:id/show'}
-            exact
-            component={ModelsFormPageView}
           />
 
           <Route path={'/admin/roles'} exact component={RolesTablePage} />

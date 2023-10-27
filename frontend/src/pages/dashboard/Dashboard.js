@@ -20,24 +20,21 @@ const Dashboard = () => {
 
   const [users, setUsers] = useState(0);
   const [orders, setOrders] = useState(0);
-  const [models, setModels] = useState(0);
   const [roles, setRoles] = useState(0);
   const [permissions, setPermissions] = useState(0);
 
   const [currentUser, setCurrentUser] = useState(null);
 
   async function loadData() {
-    const fns = [setUsers, setOrders, setModels, setRoles, setPermissions];
+    const fns = [setUsers, setOrders, setRoles, setPermissions];
 
     const responseUsers = axios.get(`/users/count`);
     const responseOrders = axios.get(`/orders/count`);
-    const responseModels = axios.get(`/models/count`);
     const responseRoles = axios.get(`/roles/count`);
     const responsePermissions = axios.get(`/permissions/count`);
     Promise.allSettled([
       responseUsers,
       responseOrders,
-      responseModels,
       responseRoles,
       responsePermissions,
     ]).then((res) =>
@@ -110,27 +107,6 @@ const Dashboard = () => {
                   <p className={classes.widgetText}>
                     Orders:{' '}
                     <span className={classes.widgetTextCount}>{orders}</span>
-                  </p>
-                </div>
-              </Widget>
-            </Link>
-          </Grid>
-        )}
-
-        {hasPermission(currentUser, 'READ_MODELS') && (
-          <Grid item xs={12} sm={6} lg={4} xl={3}>
-            <Link to={'/admin/models'} style={{ textDecoration: 'none' }}>
-              <Widget title={'Models'}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <InfoIcon color='primary' sx={{ mr: 1 }} />
-                  <p className={classes.widgetText}>
-                    Models:{' '}
-                    <span className={classes.widgetTextCount}>{models}</span>
                   </p>
                 </div>
               </Widget>

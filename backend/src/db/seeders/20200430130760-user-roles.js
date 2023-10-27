@@ -67,7 +67,7 @@ module.exports = {
       ];
     }
 
-    const entities = ['users', 'orders', 'models', 'roles', 'permissions'];
+    const entities = ['users', 'orders', 'roles', 'permissions'];
     await queryInterface.bulkInsert(
       'permissions',
       entities.flatMap(createPermissions),
@@ -145,31 +145,6 @@ primary key ("roles_permissionsId", "permissionId")
       {
         createdAt,
         updatedAt,
-        roles_permissionsId: getId('User'),
-        permissionId: getId('CREATE_MODELS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('User'),
-        permissionId: getId('READ_MODELS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('User'),
-        permissionId: getId('UPDATE_MODELS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('User'),
-        permissionId: getId('DELETE_MODELS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
         roles_permissionsId: getId('Administrator'),
         permissionId: getId('CREATE_USERS'),
       },
@@ -215,31 +190,6 @@ primary key ("roles_permissionsId", "permissionId")
         updatedAt,
         roles_permissionsId: getId('Administrator'),
         permissionId: getId('DELETE_ORDERS'),
-      },
-
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('CREATE_MODELS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('READ_MODELS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('UPDATE_MODELS'),
-      },
-      {
-        createdAt,
-        updatedAt,
-        roles_permissionsId: getId('Administrator'),
-        permissionId: getId('DELETE_MODELS'),
       },
 
       {

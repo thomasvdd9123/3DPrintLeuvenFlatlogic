@@ -145,17 +145,6 @@ function Sidebar({ location, structure }) {
           />
         )}
 
-        {hasPermission(currentUser, 'READ_MODELS') && (
-          <SidebarLink
-            label='Models'
-            link='/admin/models'
-            location={location}
-            isSidebarOpened={isSidebarOpenedWrapper}
-            icon={<CoreIcon />}
-            toggleDrawer={toggleDrawer(true)}
-          />
-        )}
-
         {hasPermission(currentUser, 'READ_ROLES') && (
           <SidebarLink
             label='Roles'

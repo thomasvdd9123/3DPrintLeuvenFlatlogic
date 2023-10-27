@@ -6,8 +6,6 @@ import users from 'reducers/users/usersReducers';
 
 import orders from 'reducers/orders/ordersReducers';
 
-import models from 'reducers/models/modelsReducers';
-
 import roles from 'reducers/roles/rolesReducers';
 
 import permissions from 'reducers/permissions/permissionsReducers';
@@ -20,8 +18,6 @@ export default (history) =>
     users,
 
     orders,
-
-    models,
 
     roles,
 
